@@ -23,8 +23,8 @@ class Process(BaseModel):
     bots: Optional[list[Bot]] = ormar.ManyToMany(
         Bot, related_name="bots_process"
     )
-    from_chat: Chat
-    to_chat: Chat
+    from_chat: Chat = ormar.ForeignKey(Chat)
+    to_chat: Chat = ormar.ForeignKey(Chat)
 
     class Meta:
         tablename: str = "process"

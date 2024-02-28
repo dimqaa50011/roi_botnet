@@ -20,4 +20,7 @@ class Config(BaseModel):
 
     filter: ParsingFilters = ormar.ForeignKey(ParsingFilters)
     inviter_config: InviterConfig = ormar.ForeignKey(InviterConfig)
-    process: Process
+    process: Process = ormar.ForeignKey(Process)
+
+    class Meta:
+        tablename: str = "config"
