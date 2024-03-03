@@ -15,13 +15,13 @@ class ChatRestriction(BaseModel):
         tablename: str = "chat_restrictions"
 
 
-class ChatType(Enum, str):
-    ...
+# class ChatType(Enum, str):
+#     ...
 
 
 class Chat(BaseModel):
 
-    chat_type = ormar.Enum(ChatType)
+    chat_type: str = ormar.String(max_length=10)
     chat_id: int = ormar.BigInteger()
     link: str = ormar.String(max_length=100)
     linked_chat: str = ormar.String(max_length=100)

@@ -5,13 +5,13 @@ import ormar
 from .base_model import BaseModel
 
 
-class ProxySchema(Enum, str):
-    ...
+# class ProxySchema(Enum):
+#     HTTP = "http"
 
 
 class Proxy(BaseModel):
 
-    schema = ormar.Enum(ProxySchema)
+    name_schema: str = ormar.String(max_length=6)
     ip: str = ormar.String(max_length=32)
     port: str = ormar.String(max_length=32)
     user: str = ormar.String(max_length=32)

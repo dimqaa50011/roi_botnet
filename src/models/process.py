@@ -8,23 +8,23 @@ from .bot import Bot
 from .chat import Chat
 
 
-class TypeProcess(Enum, str):
-    ...
-
-
-class Status(Enum, str):
-    ...
+# class TypeProcess(Enum, str):
+#     ...
+#
+#
+# class Status(Enum, str):
+#     ...
 
 
 class Process(BaseModel):
 
-    type_process: TypeProcess = ormar.Enum(TypeProcess)
-    status: Status = ormar.Enum(Status)
+    type_process: str = ormar.String(max_length=10)
+    status: str = ormar.String(max_length=10)
     bots: Optional[list[Bot]] = ormar.ManyToMany(
         Bot, related_name="bots_process"
     )
-    from_chat: Chat = ormar.ForeignKey(Chat)
-    to_chat: Chat = ormar.ForeignKey(Chat)
+    from_chat: Chat = ormar.ForeignKey(Chat, related_name="from_chat_process")
+    to_chat: Chat = ormar.ForeignKey(Chat, related_name="to_chat_process")
 
     class Meta:
         tablename: str = "process"

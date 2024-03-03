@@ -7,4 +7,4 @@ from .mongo_conf import MongoConfig
 @dataclass
 class AppSettings:
     db_conf: DbConfig
-    mongo_conf: MongoConfig
+    # mongo_conf: MongoConfig

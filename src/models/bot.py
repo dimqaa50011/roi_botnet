@@ -4,6 +4,7 @@ import ormar
 
 from .base_model import BaseModel
 from .proxy import Proxy
+from .session import Session
 
 
 class BotInfo(BaseModel):
@@ -18,12 +19,10 @@ class BotInfo(BaseModel):
 
 class Bot(BaseModel):
 
-    api_id: str = ormar.String(max_length=100)
-    api_hash: str = ormar.String(max_length=100)
     name: str = ormar.String(max_length=32)
-    phone: str = ormar.String(max_length=16)
-    bot_info: BotInfo = ormar.ForeignKey(BotInfo)
-    proxy: Proxy = ormar.ForeignKey(Proxy)
+    bot_info: BotInfo = ormar.ForeignKey(BotInfo, related_name="bot")
+    proxy: Proxy = ormar.ForeignKey(Proxy, related_name="proxy")
+    session: Session = ormar.ForeignKey(Session, related_name="session")
 
     class Meta:
         tablename: str = "bot"

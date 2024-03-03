@@ -13,7 +13,7 @@ class User(BaseModel):
     first_name: str = ormar.String(max_length=64)
     last_name: str = ormar.String(max_length=64)
     username: str = ormar.String(max_length=64)
-    created_at: datetime.datetime = ormar.DateTime()
+    created_at: datetime.datetime = ormar.DateTime(default=datetime.datetime.now)
     language_code: str = ormar.String(max_length=64)
     phone: str = ormar.String(max_length=16)
     is_premium: bool = ormar.Boolean()
